@@ -1,0 +1,19 @@
+package cn.rainupup.cloudproviderpayment8001;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.sql.DataSource;
+
+@SpringBootTest
+class CloudProviderPayment8001ApplicationTests {
+    @Autowired
+    DataSource dataSource;
+
+    @Test
+    void contextLoads() {
+        System.out.println(dataSource);
+    }
+
+}
