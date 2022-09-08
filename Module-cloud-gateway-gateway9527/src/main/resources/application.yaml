@@ -1,0 +1,28 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway9527
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: payment_routh
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/get/**
+            #- After=2022-08-31T18:46:20.202+08:00[Asia/Shanghai]
+            #- Between=2022-08-31T18:46:20.202+08:00[Asia/Shanghai],2022-08-31T18:55:20.202+08:00[Asia/Shanghai]
+            #- Cookie=user,rain    # 必须携带key为user，value为rain的cookie才能访问
+            #- Host=**.rainupup.cn
+            #- Method=GET
+            #- Query=username,rain
+eureka:
+  client:
+    service-url:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://localhost:7001/eureka
